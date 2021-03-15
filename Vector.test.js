@@ -72,8 +72,7 @@ describe('Vector class', () => {
 
         describe('scalar multiplication', () => {
             it('returns new vector with result', () => {
-                const result = v1.scalarMultiply(3);
-                expect(result.values).toEqual([3, 6, 9]);
+                expect(v1.scalarMultiply(3).values).toEqual([3, 6, 9]);
             });
         });
     });
