@@ -1,7 +1,6 @@
 const Vector = require('./Vector.js');
 
 const SAME_DIM_ERR = 'Vectors should be same-dimentional';
-//
 const CROSS_PROD_DIM_ERR = 'crossProduct works only for 3-dimensional vectors';
 
 describe('Vector', () => {
