@@ -1,12 +1,12 @@
 /**
  * Class for performing math operations over vectors
-*/
+ */
 module.exports = class Vector {
     #values = [];
 
     /**
      * Constructor
-     * 
+     *
      * @param {number[]} values - Vector coordinates.
      */
     constructor(values = []) {
@@ -16,7 +16,7 @@ module.exports = class Vector {
 
     /**
      * Get vector values
-     * 
+     *
      * @return {number[]}
      */
     get values() {
@@ -25,7 +25,7 @@ module.exports = class Vector {
 
     /**
      * Returns vector value at i-th coordinate
-     * 
+     *
      * @return {number}
      */
     at(i) {
@@ -34,9 +34,9 @@ module.exports = class Vector {
 
     /**
      * Adds a given vector to the current
-     * 
+     *
      * @param {Vector} vector
-     * 
+     *
      * @return {Vector} new vector
      */
     add(vector) {
@@ -49,9 +49,9 @@ module.exports = class Vector {
 
     /**
      * Substracts a given vector from the current
-     * 
+     *
      * @param {Vector} vector
-     * 
+     *
      * @return {Vector} new vector
      */
     subtract(vector) {
@@ -62,12 +62,11 @@ module.exports = class Vector {
         return new Vector(result);
     }
 
-    
     /**
      * Multiplies vector with scalar
-     * 
+     *
      * @param {number} x
-     * 
+     *
      * @return {Vector} new vector
      */
     scalarMultiply(x) {
@@ -76,12 +75,11 @@ module.exports = class Vector {
         return new Vector(result);
     }
 
-    
     /**
      * Tensor production of current vector with another
-     * 
+     *
      * @param {Vector} vector
-     * 
+     *
      * @return {Vector} new vector
      */
     tensorProduct(vector) {
@@ -92,28 +90,31 @@ module.exports = class Vector {
         return new Vector(result);
     }
 
-     /**
+    /**
      * Dot production of current vector with another
-     * 
+     *
      * @param {Vector} vector
-     * 
+     *
      * @return {number} result
      */
     dotProduct(vector) {
         this.#checkSameDimentional(vector);
 
-        const result = this.tensorProduct(vector).values.reduce((s, a) => s + a, 0);
+        const result = this.tensorProduct(vector).values.reduce(
+            (s, a) => s + a,
+            0
+        );
 
         return result;
     }
 
-     /**
+    /**
      * Cross production of current vector with another
-     * 
+     *
      * @param {Vector} vector
-     * 
+     *
      * @throws {Error}
-     * 
+     *
      * @return {Vector} new vector
      */
     crossProduct(vector) {
@@ -133,11 +134,24 @@ module.exports = class Vector {
         return new Vector(result);
     }
 
-     /**
-     * Tensor production of current vector with another
-     * 
+    /**
+     * Equality to given vector
+     *
      * @param {Vector} vector
-     * 
+     *
+     * @return {boolean} result
+     */
+    equals(vector) {
+        if (this.size !== vector.size) return false;
+
+        return this.values.every((a, i) => a === vector.at(i));
+    }
+
+    /**
+     * Checks if the vector has thame dimensions to given one
+     *
+     * @param {Vector} vector
+     *
      * @throws {Vector} new vector
      */
     #checkSameDimentional(vector) {
