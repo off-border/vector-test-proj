@@ -1,0 +1,17 @@
+{
+  "name": "vector-test-proj",
+  "version": "1.0.0",
+  "description": "Test project",
+  "main": "index.js",
+  "repository": "https://github.com/off-border/vector-test-proj",
+  "author": "off-border",
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch"
+  },
+  "dependencies": {
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
+  }
+}
