@@ -54,12 +54,18 @@ module.exports = class Vector {
     }
 
     crossProduct(v) {
-        this.#checkSameDimentions(v);
+        if (this.size !== 3 || v.size !== 3)
+            throw new Error('crossProduct works only for 3-dimensional vectors');
+        const [a, b] = [this.values, v.values];
+        const [x, y, z] = [0, 1, 2];
 
-        const result = this.tensorProduct(v).values
-            .reduce((s, a) => s + a, 0);
+        const result = [
+            a[y] * b[z] - a[z] * b[y],
+            a[z] * b[x] - a[x] * b[z],
+            a[x] * b[y] - a[y] * b[x]
+        ];
 
-        return result;
+        return new Vector(result);
     }
 
     #checkSameDimentions(v) {
