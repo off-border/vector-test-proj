@@ -97,7 +97,7 @@ module.exports = class Vector {
      * 
      * @param {Vector} vector
      * 
-     * @return {Vector} new vector
+     * @return {number} result
      */
     dotProduct(vector) {
         this.#checkSameDimentional(vector);
