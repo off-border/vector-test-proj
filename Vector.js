@@ -1,12 +1,12 @@
 module.exports = class Vector {
-    #values = []
+    #values = [];
     constructor(values = []) {
-        this.#values = [...values]
+        this.#values = [...values];
         this.size = values.length;
     }
 
     get values() {
-        return this.#values
+        return this.#values;
     }
 
     at(i) {
@@ -14,11 +14,56 @@ module.exports = class Vector {
     }
 
     add(v) {
-        if (this.size !== v.size)
-            throw new Error('Vectors should be same-dimentional')
+        this.#checkSameDimentions(v);
 
-        const result = this.#values.map((a, i) => a + v.at(i))
+        const result = this.#values.map((a, i) => a + v.at(i));
 
-        return new Vector(result)
+        return new Vector(result);
     }
-}
+
+    subtract(v) {
+        this.#checkSameDimentions(v);
+
+        const result = this.#values.map((a, i) => a - v.at(i));
+
+        return new Vector(result);
+    }
+
+    scalarMultiply(x) {
+        const result = this.#values.map((a) => a * x);
+
+        return new Vector(result);
+    }
+
+    tensorProduct(v) {
+        this.#checkSameDimentions(v);
+
+        const result = this.#values
+            .map((a, i) => a * v.at(i));
+
+        return new Vector(result);
+    }
+
+    dotProduct(v) {
+        this.#checkSameDimentions(v);
+
+        const result = this.tensorProduct(v).values
+            .reduce((s, a) => s + a, 0);
+
+        return result;
+    }
+
+    crossProduct(v) {
+        this.#checkSameDimentions(v);
+
+        const result = this.tensorProduct(v).values
+            .reduce((s, a) => s + a, 0);
+
+        return result;
+    }
+
+    #checkSameDimentions(v) {
+        if (this.size !== v.size)
+            throw new Error('Vectors should be same-dimentional');
+    }
+};
