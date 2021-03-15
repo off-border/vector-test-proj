@@ -1,7 +1,7 @@
 const Vector = require('./Vector.js');
 
 const SAME_DIM_ERR = 'Vectors should be same-dimentional';
-const TREE_DIM_ERR = 'crossProduct works only for 3-dimensional vectors';
+const CROSS_PROD_DIM_ERR = 'crossProduct works only for 3-dimensional vectors';
 
 describe('Vector', () => {
     describe('constructor', () => {
@@ -62,7 +62,7 @@ describe('Vector', () => {
 
         describe('crossProduct(v): cross production (vector)', () => {
             it('throws an error for non same-dimentional vectors', () => {
-                expect(() => v3.crossProduct(v3)).toThrow(TREE_DIM_ERR);
+                expect(() => v3.crossProduct(v3)).toThrow(CROSS_PROD_DIM_ERR);
             });
 
             it('returns new vector with result', () => {
