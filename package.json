@@ -2,7 +2,7 @@
   "name": "vector-test-proj",
   "version": "1.0.0",
   "description": "Test project",
-  "main": "index.js",
+  "main": "Vector.js",
   "repository": "https://github.com/off-border/vector-test-proj",
   "author": "off-border",
   "license": "MIT",
