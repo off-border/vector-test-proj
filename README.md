@@ -1,5 +1,7 @@
 ### Vector opertaions helper class ###
 
+See usage examples at Vector.test.js
+
 ## installation ##
 
 ```
